@@ -1,0 +1,17 @@
+//Parametres de départ
+const int relais_ventilo = 2 ;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Initialisation du système");
+  pinMode(relais_ventilo, OUTPUT);
+}
+
+void loop() {
+ digitalWrite(relais_ventilo, HIGH);
+ Serial.println("Du vent");
+ delay(1000);
+ digitalWrite(relais_ventilo, LOW);
+ delay(5000);
+ Serial.println("Pas de vent");
+}
