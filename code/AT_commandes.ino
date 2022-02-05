@@ -3,7 +3,7 @@
 #define TX 10
 SoftwareSerial BlueT(RX,TX);
 char recvChar;
-char consigne
+char consigne;
 
 
 /* Constantes pour la communication avec le module KT403A */
@@ -38,49 +38,58 @@ void loop(){
     consigne=char(BlueT.read());
     Serial.println(consigne);
     switch (consigne){
-      case "0":
-        //send_kt_command(0x06, 0, volume, 10)
-        setVolume(0);
+      case '0':
+        send_kt_command(0x06, 0, 0, 10);
+        //setVolume(0);
         break;
-      case "1":
-        setVolume(1);
+      case '1':
+        send_kt_command(0x06, 0, 3, 10);
+        //setVolume(1);
         break;
-      case "2":
-        setVolume(2);
+      case '2':
+        send_kt_command(0x06, 0, 6, 10);
+        //setVolume(2);
         break;
-      case "3":
-        setVolume(3);
+      case '3':
+        send_kt_command(0x06, 0, 9, 10);
+        //setVolume(3);
         break;
-      case "4":
-        setVolume(4);
+      case '4':
+        send_kt_command(0x06, 0, 12, 10);
+        //setVolume(4);
         break;
-      case "5":
-        setVolume(5);
+      case '5':
+        send_kt_command(0x06, 0, 15, 10);
+        //setVolume(5);
         break;
-      case "6":
-        setVolume(6);
+      case '6':
+        send_kt_command(0x06, 0, 18, 10);
+        //setVolume(6);
         break;
-      case "7":
-        setVolume(7);
+      case '7':
+        send_kt_command(0x06, 0, 21, 10);
+        //setVolume(7);
         break;
-      case "8":
-        setVolume(8);
+      case '8':
+        send_kt_command(0x06, 0, 24, 10);
+        //setVolume(8);
         break;
-      case "9":
-        setVolume(9);
+      case '9':
+        send_kt_command(0x06, 0, 27, 10);
+        //setVolume(9);
         break;
 
-      case "A":
+      case 'A':
         Serial.println("Musique d'après");
        break;
-      case "B":
+      case 'B':
         Serial.println("Musique d'après");
        break;
-      case "L":
+      case 'L':
         Serial.println("lecture mistro");
         send_kt_command(0x0D, 0, 0, 20);
         break;
-      case "S":
+      case 'S':
         Serial.println("Stop music");
         send_kt_command(0x16, 0, 0, 20);
         break;
