@@ -70,7 +70,6 @@ void setup() {
 void loop() {
   //Serial.print("etape 0");
   if (Serial.available() > 0) {
-    Serial.print("etape 1");
     consigne=(Serial.read());
     Serial.println(consigne);
     switch (consigne){
@@ -139,7 +138,7 @@ void loop() {
         break;
       case 'S':
         Serial.println("Stop music");
-        sendCommand(0x16, 0, 20);
+        sendCommand(0X0E, 0, 20);
         break;
     }    
   }
