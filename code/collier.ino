@@ -54,6 +54,23 @@ static int8_t Send_buf[8] = {0} ;//The MP3 player undestands orders in a 8 int s
 #define SET_DAC 0X17//data is needed 00 start DAC OUTPUT;01 DAC no output 
 #define SINGLE_PLAY 0X08//Single play(without folder)
 
+void sendCommand(int8_t command, int16_t dat, unsigned long cmd_delay) { 
+  Serial.print("send command ok");
+  //delay(20); 
+  Send_buf[0] = 0x7e; //starting byte 
+  Send_buf[1] = 0xff; //version 
+  Send_buf[2] = 0x06; //the number of bytes of the command without starting byte and ending byte 
+  Send_buf[3] = command; // 
+  Send_buf[4] = 0x00;//0x00 = no feedback, 0x01 = feedback 
+  Send_buf[5] = (int8_t)(dat >> 8);//datah 
+  Send_buf[6] = (int8_t)(dat); //datal 
+  Send_buf[7] = 0xef; //ending byte 
+  for(uint8_t i=0; i<8; i++){ 
+    mySerial.write(Send_buf[i]) ; 
+  }
+  //delay(cmd_delay);
+}
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -71,109 +88,12 @@ void setup() {
   sendCommand(0x06, 21, 10);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  if (BlueT.available()){
-    rec = char(BlueT.read());
-    chemin(rec);}
-}
-
-//cette fonction redirige vers les bonnes fonctions
-void chemin(char chem) {
-  switch (chem) {
-    case 'C':
-    if (ledAl ==0){
-      ledAl = 1;
-      ledAl = secondL();}
-      break;
-    case 'G':
-    if (ledAl == 0){
-      ledAl = 1;
-      ledAl = firstL();}
-      break;
-    default:
-      break;
-    case '0':
-      sendCommand(0x06, 0, 10);
-      Serial.println("son a 0");
-      //setVolume(0);
-      break;
-    case '1':
-      sendCommand(0x06, 3, 10);
-      Serial.println("son a 1");
-      //setVolume(1);
-      break;
-    case '2':
-      sendCommand(0x06, 6, 10);
-      Serial.println("son a 2");
-      //setVolume(2);
-      break;
-    case '3':
-      sendCommand(0x06, 9, 10);
-      Serial.println("son a 3");
-      //setVolume(3);
-      break;
-    case '4':
-      sendCommand(0x06, 12, 10);
-      Serial.println("son a 4");
-      //setVolume(4);
-      break;
-    case '5':
-      sendCommand(0x06, 15, 10);
-      Serial.println("son a 5");
-      //setVolume(5);
-      break;
-    case '6':
-      sendCommand(0x06, 18, 10);
-      Serial.println("son a 6");
-      //setVolume(6);
-      break;
-    case '7':
-      sendCommand(0x06, 21, 10);
-      Serial.println("son a 7");
-      //setVolume(7);
-      break;
-    case '8':
-      sendCommand(0x06, 24, 10);
-      Serial.println("son a 8");
-      //setVolume(8);
-      break;
-    case '9':
-      sendCommand(0x06, 27, 10);
-      Serial.println("son a 9");
-      //setVolume(9);
-      break;
-
-    case 'A':
-      Serial.println("Musique d'après");
-      sendCommand(CMD_PLAY_WITHFOLDER, 0X0303, 10000);//Troisieme chanson répertoire no 3
-      delay(100);
-     break;
-    case 'B':
-      Serial.println("Musique d'avant");
-     break;
-    case 'L':
-      Serial.println("lecture mistro");
-      sendCommand(0x0D, 0, 20);
-      break;
-    case 'S':
-      Serial.println("Stop music");
-      sendCommand(0X0E, 0, 20);
-      break;
-  }
-}
-
-//cette fonction permet de récuperer les informations envoyées depuis le téléphone
-char recup() {
-  return char(BlueT.read());
-}
-
 //permet d'attendre x ms mais en même récupérer des info venant du bluetooth et faire les fonctions nécessaire
 void attente(int temps) {
   currentTime = millis();
   while (millis() - currentTime < temps) {
-    Serial.println("wait");
-    Serial.println(millis());
+    //Serial.println("wait");
+    //Serial.println(millis());
     if (BlueT.available()){
     rec = char(BlueT.read());
     chemin(rec);
@@ -317,19 +237,122 @@ int firstL() {
   return 0;
 }
 
-void sendCommand(int8_t command, int16_t dat, unsigned long cmd_delay) { 
-  Serial.print("send command ok");
-  attente(20); 
-  Send_buf[0] = 0x7e; //starting byte 
-  Send_buf[1] = 0xff; //version 
-  Send_buf[2] = 0x06; //the number of bytes of the command without starting byte and ending byte 
-  Send_buf[3] = command; // 
-  Send_buf[4] = 0x00;//0x00 = no feedback, 0x01 = feedback 
-  Send_buf[5] = (int8_t)(dat >> 8);//datah 
-  Send_buf[6] = (int8_t)(dat); //datal 
-  Send_buf[7] = 0xef; //ending byte 
-  for(uint8_t i=0; i<8; i++){ 
-    mySerial.write(Send_buf[i]) ; 
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  while (BlueT.available()){
+    rec = char(BlueT.read());
+    chemin(rec);}
+}
+
+//cette fonction redirige vers les bonnes fonctions
+void chemin(char chem) {
+  switch (chem) {
+
+    case '0':
+      sendCommand(0x06, 0, 10);
+      Serial.println("son a 0");
+      //setVolume(0);
+      break;
+    case '1':
+      sendCommand(0x06, 3, 10);
+      Serial.println("son a 1");
+      //setVolume(1);
+      break;
+    case '2':
+      sendCommand(0x06, 6, 10);
+      Serial.println("son a 2");
+      //setVolume(2);
+      break;
+    case '3':
+      sendCommand(0x06, 9, 10);
+      Serial.println("son a 3");
+      //setVolume(3);
+      break;
+    case '4':
+      sendCommand(0x06, 12, 10);
+      Serial.println("son a 4");
+      //setVolume(4);
+      break;
+    case '5':
+      sendCommand(0x06, 15, 10);
+      Serial.println("son a 5");
+      //setVolume(5);
+      break;
+    case '6':
+      sendCommand(0x06, 18, 10);
+      Serial.println("son a 6");
+      //setVolume(6);
+      break;
+    case '7':
+      sendCommand(0x06, 21, 10);
+      Serial.println("son a 7");
+      //setVolume(7);
+      break;
+    case '8':
+      sendCommand(0x06, 24, 10);
+      Serial.println("son a 8");
+      //setVolume(8);
+      break;
+    case '9':
+      sendCommand(0x06, 27, 10);
+      Serial.println("son a 9");
+      //setVolume(9);
+      break;
+
+    case 'A':
+      Serial.println("Musique d'après");
+      sendCommand(0x01, 0, 10);
+      //delay(100);
+     break;
+    case 'B':
+      Serial.println("Musique d'avant");
+      sendCommand(0x02, 0, 10);
+     break;
+    case 'L':
+      Serial.println("lecture mistro");
+      sendCommand(0x0D, 0, 20);
+      break;
+    case 'S':
+      Serial.println("Stop music");
+      sendCommand(0X0E, 0, 20);
+      break;
+
+    case 'O':
+      Serial.println("BOOM");
+      sendCommand(CMD_PLAY_WITHFOLDER, 0X0303, 10000);//Troisieme chanson répertoire no 3
+      if (ledAl == 0){
+        ledAl = 1;
+        ledAl = firstL();}
+      break;
+
+    case 'a':
+      Serial.print("01 : Boku no Hero Academia OST - Bombing King _Bakugo Theme_");
+      sendCommand(SINGLE_PLAY, 0X0001, 10000);//Troisieme chanson répertoire no 3
+      break;
+    case 'b':
+      Serial.print("02 : My Hero Academia OST - You Say Run");
+      sendCommand(SINGLE_PLAY, 0X0002, 10000);//Troisieme chanson répertoire no 3
+      break;
+    case 'c':
+      Serial.print("03 : My Hero Academia – Opening Theme – The Day");
+      sendCommand(SINGLE_PLAY, 0X0003, 10000);//Troisieme chanson répertoire no 3
+      break;
+
+     case 'G':
+      if (ledAl ==0){
+        ledAl = 1;
+        ledAl = secondL();}
+        break;
+      case 'C':
+      if (ledAl == 0){
+        ledAl = 1;
+        ledAl = firstL();}
+        break;
   }
-  delay(cmd_delay);
+}
+
+//cette fonction permet de récuperer les informations envoyées depuis le téléphone
+char recup() {
+  return char(BlueT.read());
 }
