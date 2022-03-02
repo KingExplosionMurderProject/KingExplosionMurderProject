@@ -76,7 +76,7 @@ void loop() {
           if (m==X-1 and a==200 and k==6){
             digitalWrite(relais_resistance,LOW);
             digitalWrite(relais_ventilo,HIGH);
-            delay(500);
+            delay(750);
             
             digitalWrite(relais_ventilo,LOW);
           }
