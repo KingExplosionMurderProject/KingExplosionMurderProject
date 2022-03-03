@@ -5,6 +5,7 @@
 int X = 20; //nombre de LED
 int led = 6; // I/O du bandeau
 int ledAl;
+int cool = 0;
 
 // Declare our NeoPixel strip object:
 Adafruit_NeoPixel strip(X, led, NEO_GRB + NEO_KHZ800);
@@ -69,6 +70,15 @@ void sendCommand(int8_t command, int16_t dat, unsigned long cmd_delay) {
     mySerial.write(Send_buf[i]) ; 
   }
   //delay(cmd_delay);
+}
+
+void couleur(int a, int b, int c){
+  for (int n = 0; n < X; n++) {
+        strip.setPixelColor(n, a, b, c); //normalement ca fait du orange, si tu veux que ca soit plus rouge, tu diminue la deuxième valeur
+        strip.show();
+        //delay(5000);
+        Serial.println("carrotte");
+      }
 }
 
 void setup() {
@@ -348,6 +358,61 @@ void chemin(char chem) {
       if (ledAl == 0){
         ledAl = 1;
         ledAl = firstL();}
+        break;
+
+      case 'z': //orange
+      if (ledAl==0)
+          couleur(255, 100, 0);
+      break;
+          
+      case 'y': //jaune
+      if (ledAl==0)
+          couleur(243, 214, 23);
+          break;
+          
+      case 'x': //rouge
+      if (ledAl==0)
+          couleur(255, 0, 00);
+          break;
+          
+      case'w': //turquoise
+      if (ledAl==0)
+          couleur(38, 196, 236);
+          break;
+          
+      case 'v': //vert
+      if (ledAl==0)
+          couleur(9, 156, 9);
+          break;
+          
+      case 'u': //Héliotrope rose
+      if (ledAl==0)
+          couleur(255, 60, 150);
+          break;
+
+      case 't': //Bleu persan
+      if (ledAl==0)
+          couleur(102, 0, 255);
+          break;
+          
+      case 's': //Rouge brique
+      if (ledAl==0)
+          couleur(225, 59, 10);
+          break;
+          
+      case 'r': //Or
+      if (ledAl==0)
+          couleur(255, 215, 0);
+          break;
+
+      case 'q': // Ecarlate
+      if (ledAl==0)
+          couleur(200, 5, 7);
+          break;
+          
+      case 'p': //éteint
+      if (ledAl==0)
+        couleur(0, 0, 0);
         break;
   }
 }
