@@ -98,7 +98,7 @@ void loop() {
       delay(50);
     }
     if(count>=10){
-      count = 0
+      count = 0;
       for(int t=0;t<X;t++){
         strip.setPixelColor(t,0,0,255);
       }  
