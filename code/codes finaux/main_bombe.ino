@@ -7,6 +7,7 @@ const int relais_resistance = 7 ;
 // On a Trinket or Gemma we suggest changing this to 1:
 int X = 37; //nombre de LED
 int led = 6; // I/O du bandeau
+int count =0;
 
 // Declare our NeoPixel strip object:
 Adafruit_NeoPixel strip(X, led, NEO_GRB + NEO_KHZ800); 
@@ -45,6 +46,7 @@ void loop() {
   
   val = digitalRead(bouton);
   if (val==LOW){
+    count = count + 1;
 
     int retard = 20;
     for (int k=0;k<=6;k++){
@@ -94,6 +96,13 @@ void loop() {
       }
       strip.show();
       delay(50);
+    }
+    if(count>=10){
+      count = 0
+      for(int t=0;t<X;t++){
+        strip.setPixelColor(t,0,0,255);
+      }  
+      
     }
     
   }  
