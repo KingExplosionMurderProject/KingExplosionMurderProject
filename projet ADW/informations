@@ -1,0 +1,31 @@
+Porjet ADW
+
+
+
+Idée : 
+On ouvre un index (page ou plusieurs images sont montrés (énergie cartes pokémon) et tel le mélange du TD3 et TD5, en cliquant :  
+                          -soit on s'est déjà connecter et on arrive sur la chatroom;
+                          -soit il arrive sur le signin pour rentré avec sur cette meme page la possibilité de s'inscrire;)
+
+
+
+
+
+Les principales requetes à faire pour l'instant :
+  - requete de création d'un compte (s'inspirer du TD3) : dans le csv mettre /identifiant /mot de passe cripté en md5 /type pokémon;
+  
+  - requete authentification (s'inspirer du TD3);
+  
+  - requete pour récupérer la liste de tous les channels ( un csv les conserve sous forme : 
+                                                              - chaque ligne un nouveau canal : nom/ créateur/ [liste des users autorisés]; ) 
+        puis les renvoies de maniere clicable;
+        
+  - récupérer les messages stockés dans un csv (un nouveau csv par channel, chaque ligne un nouveau message);
+  
+  - envoyer un message (TP6);
+  
+  
+  
+  
+  PS : mise en page utiliser "flex".
+                                                            
