@@ -12,7 +12,7 @@ if (isset($_SESSION['login'])){
 if (isset($_GET["goto"])) {
 	$action = "dosignin.php?goto=" . $_GET["goto"];
 } else {
-	$action = "docsignin.php";
+	$action = "dosignin.php";
 }
 
 ?>
