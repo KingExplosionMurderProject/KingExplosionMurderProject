@@ -4,7 +4,7 @@
 // redirige l'utilisateur vers le script "signin.php",
 // sinon, redirige directement l'utilisateur vers le script
 // "signin.php" avec le bon message d'erreur en paramètre
-	$users = file("users.csv",FILE_IGNORE_NEW_LINES);
+	$users = file("fichiersCSV\users.csv",FILE_IGNORE_NEW_LINES);
 	$login = $_POST[ "login" ];
 	$mdp1 = $_POST[ "password1" ];
 	$mdp2 = $_POST[ "password2" ];
