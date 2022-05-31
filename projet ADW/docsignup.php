@@ -1,5 +1,5 @@
 <?php
-	$users = file("fichiersCVS/users.csv",FILE_IGNORE_NEW_LINES);
+	$users = file("users.csv",FILE_IGNORE_NEW_LINES);
 	$login = $_POST[ "login" ];
 	$mdp1 = $_POST[ "password1" ];
 	$mdp2 = $_POST[ "password2" ];
