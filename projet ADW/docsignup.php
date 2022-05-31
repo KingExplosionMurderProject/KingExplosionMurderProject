@@ -1,7 +1,4 @@
 <?php
-
-//vérifie les info envoyé par le signup
-
 	$users = file("users.csv",FILE_IGNORE_NEW_LINES);
 	$login = $_POST[ "login" ];
 	$mdp1 = $_POST[ "password1" ];
@@ -48,4 +45,7 @@
 	$newcontent = join("\n", $users) . "\n";
 	file_put_contents("users.csv", $newcontent); // on met le nouvel utilisateur dans le fichier
 	header("Location: signin.php");
+
+// rajouter dans le canaux.csv l'utilisateur (listes où il peut aller)
+
 ?>
