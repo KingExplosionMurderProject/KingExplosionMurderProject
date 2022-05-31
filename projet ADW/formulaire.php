@@ -1,8 +1,9 @@
 <?php
 	session_start();
 	// si l'utilisateur tente d'accéder à cette page sans être authentifié, alors le script le redirige vers le script de login
+	
 	if (!isset($_SESSION["login"])) {
-		$_SESSION["goto"] = "formualaire.php";
+		$_SESSION["goto"] = "formulaire.php";
 		header("Location: signin.php");
 		exit();
 	}
@@ -38,6 +39,12 @@
 		<div class="list"><!--les autres noms de salons-->
 				<h2>Blabla 1</h2>
 				blablabla
+				<br>
+				<?php echo isset($_SESSION["login"]); ?>
+				<br>
+				Utilisateur : <strong>
+					<?php echo $login; ?>
+					</strong>
 		</div> 
 		<div class="chat"> <!--discussion principale-->
 			<h2>Blabla 2</h2>
