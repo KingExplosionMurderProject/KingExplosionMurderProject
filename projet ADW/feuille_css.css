@@ -1,0 +1,60 @@
+body {
+	max-width: 1024px;
+	min-width: 800px;
+	margin: auto;
+	border-right: solid 2px black;
+	border-left: solid 2px black;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+img{
+	width : 10%;
+}
+
+div.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header {
+	text-align: center;
+	border-top: solid 2px lightblue;
+	padding: 20px;
+	border-bottom: solid 2px lightblue;
+	display: flex;
+	justify-content: center; 
+	align-items: center;
+}
+
+h1{
+	padding : 30 ;
+}
+
+h2{
+	text-align: center;
+}
+
+div.chat{
+	flex-grow: 1;
+}
+
+div.list{
+	width: 15%;
+	border-right-color: black;
+	border-right-width: 1px;
+	border-right-style: solid;
+	margin-right: 20px;
+	padding-bottom: 20px;
+}
+
+div#main{
+	padding: 0px 20px;
+	display: flex;
+	flex-grow: 1;
+}
+
+div#inscription{
+	margin: 20px;
+}
