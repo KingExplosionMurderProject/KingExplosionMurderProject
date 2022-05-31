@@ -29,8 +29,8 @@
                 <option value="eau">eau</option>
                 <option value="feu">feu</option>
                 <option value="plante">plante</option>
-				<option value="électrique">électrique</option>
-				<option value="fée">fée</option>
+		<option value="électrique">électrique</option>
+		<option value="fée">fée</option>
             </select>
             <br><br>
 			<input type="submit" value="S'inscrire">
