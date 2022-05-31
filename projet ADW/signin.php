@@ -2,12 +2,20 @@
 // Ici, on va définir correctement la variable $action utilisée plus bas :
 // si on passe le paramètre "goto" au script, l'action doit être "dosignin.php" avec ce même paramètre "goto"
 // sinon l'action doit être le script "goto" sans paramètre
+session_start();
+
+if (isset($_SESSION['login'])){
+	echo "bonjour";
+	header("Location: formulaire.php"); //si une session est déjà ouverte, renvoi directement vers les  chatroom
+	//sinon, reste sur la page de connection
+}
 
 if (isset($_GET["goto"])) {
 	$action = "dosignin.php?goto=" . $_GET["goto"];
 } else {
-	$action = "dosignin.php";
+	$action = "docsignin.php";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
