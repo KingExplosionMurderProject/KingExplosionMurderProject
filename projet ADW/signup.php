@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>TP 3 - Exo 4</title>
+		<title>Pokechat</title>
 		<meta name="author" content="DUEE-MOREAU et PELLETIER">
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 	
