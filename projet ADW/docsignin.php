@@ -18,7 +18,7 @@
 		}
 		return false;
 	}
-	$file="users.csv";
+	$file="fichiers/users.csv";
 	echo "lalala";
 	if(isset($_POST['Nouvelle inscription'])){
 		header("Location: signup.php");
