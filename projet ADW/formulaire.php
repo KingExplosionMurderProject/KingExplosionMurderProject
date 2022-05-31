@@ -13,9 +13,11 @@
 <html>
 <head>
 	<title>Pokechat</title>
+    <meta name="author" content="Duee-Moreau et Pelletier">
 	<link rel="stylesheet" type="text/css" href="feuille_css.css" />
-	<!-- <script type="text/javascript" src="js/simpleajax.js"></script> -->
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+	<!-- <script type="text/javascript" src="js/simpleajax.js"></script> 
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
 	<script src="formulaire.js"></script>
 </head>
 <body>
