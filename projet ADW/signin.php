@@ -5,7 +5,6 @@
 session_start();
 
 if (isset($_SESSION['login'])){
-	echo "bonjour";
 	header("Location: formulaire.php"); //si une session est déjà ouverte, renvoi directement vers les  chatroom
 	//sinon, reste sur la page de connection
 }
