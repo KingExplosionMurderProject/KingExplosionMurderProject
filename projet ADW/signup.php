@@ -23,7 +23,7 @@
 			<br>
 			<input type="password" name="password2">
 			<br><br>
-            Sélectionner votre typer
+            Sélectionner votre type
             <br>
             <select name="type">
                 <option value="eau">eau</option>
