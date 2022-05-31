@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	// à compléter
 	// Dans cette partie, on teste le login et le mot de passe :
 	// - on teste si le login proposé existe bien 
 	// - on teste si le mot de passe correspond
@@ -18,19 +17,21 @@
 		}
 		return false;
 	}
-	$file="users.csv";
-	echo "lalala";
+
+	$file="users.csv";		//fichier contenant tout les utilisateurs
+	
 	if(isset($_POST['Nouvelle inscription'])){
 		header("Location: signup.php");
 			exit();
 	}
+
 	if(isset($_POST['login']) && isset($_POST['password']) && test($_POST['login'],$_POST['password'],$file)){
 			$_SESSION["login"] = $_POST['login'];
-			if(isset($_GET["goto"])){
-				header("Location: ".$_GET["goto"]);	//ouvrir page1
-				exit();
-			}
-			header("Location: formulaire.php");	//ouvrir page1
+						/*if(isset($_GET["goto"])){
+							header("Location: ".$_GET["goto"]);	//ouvrir formulaire 
+							exit();
+						}*/
+			header("Location: formulaire.php");	//ouvrir formulaire
 			exit();
 	}
 	else{
