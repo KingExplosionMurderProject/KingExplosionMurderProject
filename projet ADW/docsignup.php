@@ -36,21 +36,21 @@
     }
 
     
-    function save_array($f){  //sauvegarder le nouveau fichier
+    function save_array($f,$l,$mdp,$t){  //sauvegarder le nouveau fichier
         $csv = "";
         foreach ($f as $line) { 
             $tokens = explode(',', $line);
             $csv .= $tokens[0] . ","  . $tokens[1] . "\n";
         }
-        $csv .= $login . ","  . md5($mdp1) . "," . $type . "\n";
+        $csv .= $l . ","  . md5($mdp) . "," . $t . "\n";
         file_put_contents("fichiersCSV\users.csv", $csv);
     }
-    save_array($users);
+    save_array($users,$login,$mdp1,$type);
     $_SESSION["login"] = $login;
 
-    /*if (isset($_SESSION["goto"])) {header('Location: ' . $_SESSION["goto"]);}
+    if (isset($_SESSION["goto"])) {header('Location: ' . $_SESSION["goto"]);}
     else {header('Location: formulaire.php');}
-    exit();*/
+    exit();
 
 
 
