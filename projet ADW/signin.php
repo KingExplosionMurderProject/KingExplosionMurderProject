@@ -23,6 +23,7 @@ if (isset($_GET["goto"])) {
 	<meta charset="utf-8">
 	<title>Pokechat</title>
     <meta name="author" content="Duee-Moreau et Pelletier">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
 	<!--<link rel="stylesheet" href="../css/tp3.css">
 	<link rel="stylesheet" type="text/css" href="style.css">-->
 </head>
