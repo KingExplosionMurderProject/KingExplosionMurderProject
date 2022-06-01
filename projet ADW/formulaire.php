@@ -52,7 +52,8 @@
 				foreach(file("fichiersCSV/canaux.csv", FILE_IGNORE_NEW_LINES) as $line){
 					$tokens = explode(',',$line);
 					echo "<div class='region'>";
-					echo $tokens[0];
+					echo "<div class='nomRegion'>".$tokens[0]."</div>";
+					echo "<div class='parametre'><img class='molette' src='images/molette.png' window.onload=param()></div>";	//elles serviront à sortir du channel, voir le créateur
 					echo "</div>";
 					echo "<br>";
 				}
