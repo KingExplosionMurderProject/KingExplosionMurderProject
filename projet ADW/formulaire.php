@@ -62,7 +62,7 @@
 		<div id="chat"> <!--discussion principale-->
 			<div id="place">
 				<h2>Blabla 2</h2>
-				blablabla
+				<span id="name_chanel">blablabla</span>
 				<div id="write">
 					Tapez votre texte !
 				</div>
