@@ -58,3 +58,7 @@ div#main{
 div#inscription{
 	margin: 20px;
 }
+
+div.boite_user{
+	border: solid 3px red;
+}
