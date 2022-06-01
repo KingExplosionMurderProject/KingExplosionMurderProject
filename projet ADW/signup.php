@@ -38,7 +38,9 @@
 				<input type="reset" value="Annuler">
 			</form>
 		</div>
-		<div class="center"> <img id="inscription" src="images/pokeball.png"/> </div>
+		<div class="center"> 
+			<img id="inscription" src="images/pokeball.png"/> 
+		</div>
 <?php
 	if ( isset( $_GET[ "badsignup" ] ) )
 	{
