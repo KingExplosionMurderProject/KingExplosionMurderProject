@@ -13,10 +13,6 @@ img{
 	width : 10%;
 }
 
-div.center{
-	margin-left: auto;
-	margin-right: auto;
-}
 
 header {
 	text-align: center;
@@ -36,8 +32,25 @@ h2{
 	text-align: center;
 }
 
-div.chat{
+
+div.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#chat{
 	flex-grow: 1;
+}
+
+div#place{
+	display: flex;
+	margin: 0px;
+}
+
+div#write{
+	align-self: flex-end;
+	flex-direction: column;
+	border: solid 1px darkcyan;
 }
 
 div.list{
@@ -61,4 +74,13 @@ div#inscription{
 
 div.boite_user{
 	border: solid 3px red;
+	margin-top: 5px;
+	margin-left: -10px;
+	margin-right: 10px;
+}
+
+div.region{
+	border:  solid 1px darkseagreen;
+	padding: 5px;
+	margin-right: 20px;
 }
