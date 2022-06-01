@@ -12,9 +12,9 @@ On ouvre un index (page ou plusieurs images sont montrés (énergie cartes poké
 
 
 Les principales requetes à faire pour l'instant :
-  - requete de création d'un compte (s'inspirer du TD3) : dans le csv mettre /identifiant /mot de passe cripté en md5 /type pokémon;      FAIT
+  - requete de création d'un compte (s'inspirer du TD3) : dans le csv mettre /identifiant /mot de passe cripté en md5 /type pokémon;              FAIT
   
-  - requete authentification (s'inspirer du TD3);
+  - requete authentification (s'inspirer du TD3);                                                                                                 FAIT
   
   - requete pour récupérer la liste de tous les channels ( un csv les conserve sous forme : 
                                                               - chaque ligne un nouveau canal : nom/ créateur/ [liste des users autorisés]; ) 
