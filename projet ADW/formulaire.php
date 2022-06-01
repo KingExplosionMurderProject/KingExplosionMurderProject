@@ -38,12 +38,12 @@
 				<br>
 				<a href="signout.php">déconnexion</a>
 			</div>
-			<form action="<?php echo $action; ?>" method="post">
+			<form action="channelsignup.php" method="post">
 				<h2>Canaux</h2>
 
 				<input type="button" id="Nouveau channel" value="Nouveau channel">
 				<br>
-				<input id="leNomDuChannel" type="text" size="10" style="visibility: hidden">
+				<input id="leNomDuChannel" name="leNomDuChannel" type="text" size="10" style="visibility: hidden">
 				<input type="submit" id="valider" value="OK" style="visibility: hidden">
 				
 				<br>
