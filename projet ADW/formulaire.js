@@ -22,7 +22,7 @@ window.onload = function () {
 	let button = document.getElementById("Nouveau channel");
 	button.onclick = nomChannel;
 
-	var channel = document.querySelectorAll(".region");
+	var channel = document.querySelectorAll(".nomRegion");
 	for(i=0;i<channel.length;i++){
 		channel[i].onclick= changerChannel; 
 	}
