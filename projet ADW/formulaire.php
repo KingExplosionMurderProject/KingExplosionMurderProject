@@ -7,7 +7,8 @@
 		header("Location: signin.php");
 		exit();
 	}
-	$login = $_SESSION["login"];
+	else{$login=$_SESSION["login"];}
+	
 
 ?>
 <!DOCTYPE>
@@ -29,26 +30,36 @@
         <img src="images/pokeball.png"/>
     </header>
 
-    <!--
-    <div id="top">
-		Utilisateur : <strong><?php //echo $login; ?></strong> - <a href="signout.php">déconnexion</a>
-	</div>
-	-->
 
     <div id="main"> <!-- gros contenaire-->
 		<div class="list"><!--les autres noms de salons-->
-				<h2>Blabla 1</h2>
-				blablabla
+			<div class="boite_user">
+				Utilisateur : <strong> <?php echo $login; ?> </strong>
 				<br>
-				<?php echo isset($_SESSION["login"]); ?>
+				<a href="signout.php">déconnexion</a>
+			</div>
+				<h2>Canaux</h2>
+				<input type="button" value="Nouveau cannel" onclick="creerCannel();" />
+				<p id="nomChannel" type="text" size="10" style="visibility: hidden">
 				<br>
-				Utilisateur : <strong>
-					<?php echo $login; ?>
-					</strong>
+				<?php
+				foreach(file("fichiersCSV/canaux.csv", FILE_IGNORE_NEW_LINES) as $line){
+					$tokens = explode(',',$line);
+					echo "<div class='region'>";
+					echo $tokens[0];
+					echo "</div>";
+					echo "<br>";
+				}
+			?>
 		</div> 
-		<div class="chat"> <!--discussion principale-->
-			<h2>Blabla 2</h2>
-			blablabla
+		<div id="chat"> <!--discussion principale-->
+			<div id="place">
+				<h2>Blabla 2</h2>
+				blablabla
+				<div id="write">
+					Tapez votre texte !
+				</div>
+			</div>
 		</div>
 	</div>
 
