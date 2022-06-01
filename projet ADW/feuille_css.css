@@ -13,6 +13,10 @@ img{
 	width : 10%;
 }
 
+img#inscription{
+	width : 200px;
+}
+
 
 header {
 	text-align: center;
@@ -31,12 +35,17 @@ h1{
 
 h2{
 	text-align: center;
+	text-decoration: underline 1px black;
+}
+
+h3{
+	text-align: center;
 }
 
 
 div.center{
-	margin-left: auto;
-	margin-right: auto;
+	margin: 20px;
+	margin-right: 150px;
 }
 
 div#chat{
@@ -67,10 +76,12 @@ div#main{
 	padding: 0px 20px;
 	display: flex;
 	flex-grow: 1;
+	flex-direction: row;
 }
 
 div#inscription{
 	margin: 20px;
+	width: 1200PX;
 }
 
 div.boite_user{
@@ -84,4 +95,26 @@ div.region{
 	border:  solid 1px darkseagreen;
 	padding: 5px;
 	margin-right: 20px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	gap: 0px 20px;
 }
+
+div.log{
+	margin: 0px 20px;
+}
+
+div.log2{
+	display: flex;
+	align-items: flex-end;
+}
+
+img.molette{
+	width: 20px;
+}
+
+div.parametre{
+	float: right;
+}
+
