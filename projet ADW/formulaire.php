@@ -11,7 +11,7 @@
 	
 
 ?>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Pokechat</title>
@@ -38,9 +38,15 @@
 				<br>
 				<a href="signout.php">déconnexion</a>
 			</div>
+			<form action="<?php echo $action; ?>" method="post">
 				<h2>Canaux</h2>
-				<input type="button" value="Nouveau cannel" onclick="creerCannel();" />
-				<p id="nomChannel" type="text" size="10" style="visibility: hidden">
+
+				<input type="button" id="Nouveau channel" value="Nouveau channel">
+				<br>
+				<input id="leNomDuChannel" type="text" size="10" style="visibility: hidden">
+				<input type="submit" id="valider" value="OK" style="visibility: hidden">
+				
+				<br>
 				<br>
 				<?php
 				foreach(file("fichiersCSV/canaux.csv", FILE_IGNORE_NEW_LINES) as $line){
@@ -50,7 +56,8 @@
 					echo "</div>";
 					echo "<br>";
 				}
-			?>
+				?>
+			</form>
 		</div> 
 		<div id="chat"> <!--discussion principale-->
 			<div id="place">
