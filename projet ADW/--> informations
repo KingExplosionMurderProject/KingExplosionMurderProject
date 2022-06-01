@@ -18,13 +18,19 @@ Les principales requetes à faire pour l'instant :
   
   - requete pour récupérer la liste de tous les channels ( un csv les conserve sous forme : 
                                                               - chaque ligne un nouveau canal : nom/ créateur/ [liste des users autorisés]; ) 
-        puis les renvoies de maniere clicable;
+        puis les renvoies de maniere clicable;                                                                                                     FAIT
         
   - récupérer les messages stockés dans un csv (un nouveau csv par channel, chaque ligne un nouveau message);
   
   - envoyer un message (TP6);
   
+  14 / 20
   
+Suite :
+  - Une page d’enregistrement permet à de nouveaux utilisateurs de s’inscrire                                                                      FAIT
+  - Un utilisateur peut faire une recherche sur les noms de canaux (e.g. une recherche sur “peip2” correspondra notamment “#peip2-poo" ou ”#intro-peip2-s1")  
+  - Un utilisateur doit rejoindre un canal de discussion avant de le voir apparaître dans sa liste
+  - Un utilisateur peut quitter un canal de discussion (il disparaît de sa liste)
   
   
   PS : mise en page utiliser "flex".
