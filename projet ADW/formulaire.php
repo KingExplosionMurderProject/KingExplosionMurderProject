@@ -1,4 +1,6 @@
 <?php
+	require "chat.php"; //ajouté par arwen
+
 	session_start();
 	// si l'utilisateur tente d'accéder à cette page sans être authentifié, alors le script le redirige vers le script de login
 	
@@ -65,7 +67,32 @@
 				<h2>Blabla 2</h2>
 				<span id="name_chanel">blablabla</span>
 				<div id="write">
-					Tapez votre texte !
+
+				<!--ajouté par arwen-->
+					<p class="chat">
+
+			<?php 
+			
+				if (isset($_POST['message']) && $_POST['message'] !== ""){
+					newMessage("fichiersCSV\chat2.csv");
+				} 
+				else {
+					printChat("fichiersCSV\chat2.csv");
+				}
+				
+			?>
+
+		<p>
+
+
+			<?php
+			//partie écriture des messages
+
+				ecritMess("fichiersCSV\chat2.csv"); //boite pour écire les messages
+
+			?>
+				<!--fin de l'ajouté par arwen-->
+
 				</div>
 			</div>
 		</div>
