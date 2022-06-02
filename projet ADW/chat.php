@@ -1,5 +1,8 @@
 <?php
 
+//le dernier message envoyé est automatiquement gardé, ce qui pose problème
+
+
 	// session start permet de récupérer certaines info 
     function printChat($fichier){
         //permet d'afficher les 8 derniers messages de la chatroom
@@ -48,8 +51,8 @@
     function ecritMess($fichier){
         // on fait une fonction comme ça on l'apelle suivant le salon ouvert
         $input = "<form id='newmess' method='post'>";
-        $input .= "<br>".'<input type="text" name="message" id="message">'."<br>";
-        $input .= "<br>".'<input type="submit" value="envoyer">'."<br>";
+        $input .= "<br>".'<input type="text" name="message" id="message" autocomplete="off" placeholder="Discutez avec vos amis">'."<br>";
+        $input .= "<br>".'<input type="submit" value="envoyer" id="submit">'."<br>";
         $input .= "</form>";
         echo $input;
 
