@@ -32,11 +32,11 @@
 
     }
 
-//tout ce qui est en dessous de ça ne marche pas pour le moment qwq
 
     function newMessage($fichier){
         //écrit le nouveau message et actualise le chat
         $message = "\n".$_POST['message'];
+	header("Location: formulaire.php"); //permet que si on actualise la page juste apres avoir envoyé le message, celui*ci n'est pas renvoyé
         // on met les nouveaux messages ensembles
         $chat = file($fichier);
         array_push($chat,$message);
