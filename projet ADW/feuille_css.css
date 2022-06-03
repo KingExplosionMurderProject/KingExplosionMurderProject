@@ -1,6 +1,9 @@
+/* ctrl + maj + R*/
 body {
-	max-width: 1024px;
-	min-width: 800px;
+	background-color:#abd9e9;
+  	font-family:Arial;
+	/*max-width: 1024px;				//mieux on prend toute la page
+	min-width: 800px;*/
 	margin: auto;
 	border-right: solid 2px black;
 	border-left: solid 2px black;
@@ -9,7 +12,16 @@ body {
 	flex-direction: column;
 }
 
-img{
+aside ul{
+  padding-left:0;
+  margin:0;
+  list-style-type:none;
+  overflow-y:scroll;
+  margin-bottom: 10px;
+  /*height:690px;*/
+}
+
+img.pokeball{
 	width : 10%;
 }
 
@@ -17,12 +29,15 @@ img#inscription{
 	width : 200px;
 }
 
+img#energiepp{
+	width: 40%;
+}
 
 header {
 	text-align: center;
-	border-top: solid 2px lightblue;
+	border-top: solid 2px blue;
 	padding: 20px;
-	border-bottom: solid 2px lightblue;
+	border-bottom: solid 2px blue;
 	display: flex;
 	justify-content: center; 
 	align-items: center;
@@ -48,22 +63,34 @@ div.center{
 	margin-right: 150px;
 }
 
-div#chat{
+div.chat{
 	flex-grow: 1;
 }
 
 div#place{
 	display: flex;
+	flex-direction: column;
 	margin: 0px;
 }
 
 div#write{
 	align-self: flex-end;
 	flex-direction: column;
-	border: solid 1px darkcyan;
 }
 
-div.list{
+div.discu{
+	border: solid 1px darkcyan;
+	width: 100%;
+}
+
+div.boite_parametre{
+	margin : 10px;
+	background-color: lightgrey;
+	border: solid 2 darkgrey;
+	
+}
+
+aside.list{
 	width: 15%;
 	border-right-color: black;
 	border-right-width: 1px;
@@ -115,6 +142,19 @@ img.molette{
 }
 
 div.parametre{
-	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+div.parametre:hover {
+	cursor: pointer;
+}
+
+form#newmess{
+	width: 800px;
+}
+
+div#spinner.hidden {
+	display: none;
 }
 
