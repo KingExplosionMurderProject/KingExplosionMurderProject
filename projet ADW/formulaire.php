@@ -11,7 +11,7 @@
 	}
 	else{$login=$_SESSION["login"];}
 
-	$type="energies\électrique.png";
+	
 	
 
 ?>
@@ -30,9 +30,9 @@
 <body>
 
 	<header>										<!-- ENTETE -->
-		<img src="images/pokeball.png"/>
+		<img class="pokeball" src="images/pokeball.png"/>
         <h1>POKECHAT</h1>
-        <img src="images/pokeball.png"/>
+        <img class="pokeball" src="images/pokeball.png"/>
     </header>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
@@ -42,9 +42,13 @@
 		<aside class="list">						<!--les autres noms de salons-->
 
 			<div class="boite_user">						<!-- Boite utilisateur -->
-				Utilisateur : <strong> <?php echo $login; ?> </strong>
+				Utilisateur : <strong><div id="login"><?php echo $login; ?></div> </strong>
+				
 				<br>
-				<img src="<?php echo $type;?>" id="boite_user"/>
+				<!--<div class="?">-->
+					<img src="" id="energiepp"/>
+				<!--</div>-->
+				<br>
 				<a href="signout.php">déconnexion</a>
 			</div>
 
@@ -56,7 +60,7 @@
 				<input id="leNomDuChannel" name="leNomDuChannel" type="text" size="10" style="visibility: hidden">
 				<input type="submit" id="valider" value="OK" style="visibility: hidden">
 				
-				<br>
+				<br>	<!--savoir qui a créer le channel-->
 				<br>
 
 				<div id="spinner">Spinner</div>
@@ -64,14 +68,14 @@
 
 
 				<!-- Modal -->
-				<div class="modal fade" id="parametresModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="parametresModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
 				  <div class="modal-dialog">
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				        <h5 class="modal-title" id="modalTitle">Modal title</h5>
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
-				      <div class="modal-body">
+				      <div class="modal-body" id="modal-body">
 				        ...
 				      </div>
 				      <div class="modal-footer">
@@ -82,6 +86,7 @@
 				  </div>
 				</div>
 
+				<input type="text" placeholder="search">
 
 			</form>
 		</aside> 
