@@ -1,6 +1,6 @@
 window.onload = function () {
 
-	// import readTextFile from utils.js
+	//import readTextFile() from utils.js;
 	// Recuperer liste des canaux
 	//https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules
 	
@@ -42,7 +42,7 @@ window.onload = function () {
 	// }, 3000);
 		readTextFile('fichiersCSV/canaux.csv').then((res) => {
 			// Success
-			canaux = res.split("\r\n");
+			canaux = res.split("\n");
 			canaux = canaux.filter((line) => {
 				// For each, execution pour chaque line
 				return (line && line.length > 0);
