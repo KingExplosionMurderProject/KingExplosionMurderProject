@@ -3,28 +3,27 @@
 //le dernier message envoyé est automatiquement gardé, ce qui pose problème
 
 
-	// session start permet de récupérer certaines info 
+    // session start permet de récupérer certaines info 
     function printChat($fichier){
         //permet d'afficher les 8 derniers messages de la chatroom
         $mess = file($fichier);
 
         $num = count($mess);
 
-        $affiche = "<p>"; //string avec les messages qui vont être affichés
+        $affiche = ""; //string avec les messages qui vont être affichés
 
         //on veut afficher au maximum 8 messages à la fois
 
         if ($num<=8){
             foreach($mess as $message){
-                $affiche .= "<br>".$message."<br>";
+                $affiche .= "<p>".$message."<p>";
             }
         }
         else {
             for ($j=$num-8;$j<$num;$j++){
-                $affiche .= "<br>".$mess[$j]."<br>";
+                $affiche .= "<p>".$mess[$j]."<p>";
             }
         }
-        $affiche .= "<p>";
         echo $affiche;
 
 
@@ -36,13 +35,13 @@
     function newMessage($fichier){
         //écrit le nouveau message et actualise le chat
         $message = "\n".$_POST['message'];
-	header("Location: formulaire.php"); //permet que si on actualise la page juste apres avoir envoyé le message, celui*ci n'est pas renvoyé
+    header("Location: formulaire.php"); //permet que si on actualise la page juste apres avoir envoyé le message, celui*ci n'est pas renvoyé
         // on met les nouveaux messages ensembles
         $chat = file($fichier);
         array_push($chat,$message);
         
-	    
-	    file_put_contents($fichier,$chat);
+        
+        file_put_contents($fichier,$chat);
 
         printChat($fichier);
     
