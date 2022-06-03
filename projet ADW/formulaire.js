@@ -91,8 +91,6 @@ window.onload = function () {
 		}).finally(() => {
 			let i=0;
 			users.forEach((user)=> {
-				console.log(login);
-				console.log(user[0]);
 				if(user[0]==login){
 					whichType(user);
 				}
@@ -114,6 +112,7 @@ window.onload = function () {
 			// Creer un premier <div> pour la region
 			let regionDiv = document.createElement('div');
 			regionDiv.classList = 'region d-flex justify-content-center align-items-center';
+			/*regionDiv.setAttribute("nomRegion");*/
 			// Creer un deuxieme <div> pour le nom de la region
 			let nomRegionDiv = document.createElement('div');
 			nomRegionDiv.classList.add('nomRegion');
@@ -122,6 +121,10 @@ window.onload = function () {
 			let moletteDiv = document.createElement('div');
 			moletteDiv.classList = 'parametre d-flex justify-content-center align-items-center';
 			moletteDiv.innerHTML = "<img class='molette' src='images/molette.png'>"
+			// Evenement quand on clisque sur la div
+			regionDiv.addEventListener('click', event => {
+				changerChannel(canal);
+			});
 			// Evenement quand on clique sur la molette
 			moletteDiv.addEventListener('click', event => {
 				param(canal);
@@ -144,25 +147,22 @@ window.onload = function () {
 
 	function whichType(user){
 		//let img = document.getElementById("energiepp");
-		console.log(user);
-		console.log(user[2]);
 		document.getElementById("energiepp").src = "energies\\" + user[2] +".png";
-		
-
-
 	}
 
-	function changerChannel(){
+
+	function changerChannel(canal){
+		console.log(canal);
 		let nc = document.getElementById("name_chanel");
-		nc.innerHTML = "Nous sommes à "+this.innerHTML; //this = channel[i]
+		nc.innerHTML = "Nous sommes à "+canal[0]; //this = channel[i]
+		let cc = document.getElementById("currentChannel");
+		cc.innerHTML = canal[0];
 	}
 
 	function param(canal){
 		// Mettre à jour le titre de la modal
 		let modalTitle = document.getElementById("modalTitle");
 		modalTitle.innerHTML = 'Paramètre du chat ' + canal[0];
-		console.log(canal[0]);
-		console.log(canal[1]);
 		let modalText = document.getElementById("modal-body");
 		modalText.innerHTML = "créé par l'utilisateur "+ canal[1];
 
