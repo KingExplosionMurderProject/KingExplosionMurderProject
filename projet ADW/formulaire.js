@@ -8,6 +8,11 @@ window.onload = function () {
 
 	var canaux = null;
 	var currentChannel = null;
+
+	var login = document.getElementById("login").innerHTML;
+	var users = null;
+	var currentUsers = null;
+	
 	// var fetchingCanaux = true;
 
 	// A mettre dans un fichier "utils" qui sera commun avec d'autres fichiers JS
@@ -64,6 +69,39 @@ window.onload = function () {
 			spinner.classList.add('hidden');
 			refreshChannels();
 		});
+
+
+		readTextFile('fichiersCSV/users.csv').then((res) => {
+			// Success
+			users = res.split("\r\n");
+			users = users.filter((line) => {
+				// For each, execution pour chaque line
+				return (line && line.length > 0);
+			});
+			users = users.map((col) => {
+				return col.split(',');
+			});
+			// liste de users recupere
+			//console.log(users);
+		}, (err) => {
+			// Error
+			console.log(err);
+			// Afficher un message d'erreur
+			users = [];
+		}).finally(() => {
+			let i=0;
+			users.forEach((user)=> {
+				console.log(login);
+				console.log(user[0]);
+				if(user[0]==login){
+					whichType(user);
+				}
+				i++;
+			});
+			
+			//refreshChannels();
+		});
+	
 	
 
 	function refreshChannels() {
@@ -104,6 +142,16 @@ window.onload = function () {
 		valider.style.visibility = "visible";
 	}
 
+	function whichType(user){
+		//let img = document.getElementById("energiepp");
+		console.log(user);
+		console.log(user[2]);
+		document.getElementById("energiepp").src = "energies\\" + user[2] +".png";
+		
+
+
+	}
+
 	function changerChannel(){
 		let nc = document.getElementById("name_chanel");
 		nc.innerHTML = "Nous sommes à "+this.innerHTML; //this = channel[i]
@@ -111,8 +159,13 @@ window.onload = function () {
 
 	function param(canal){
 		// Mettre à jour le titre de la modal
-		let modalTitle = document.getElementById("exampleModalLabel");
+		let modalTitle = document.getElementById("modalTitle");
 		modalTitle.innerHTML = 'Paramètre du chat ' + canal[0];
+		console.log(canal[0]);
+		console.log(canal[1]);
+		let modalText = document.getElementById("modal-body");
+		modalText.innerHTML = "créé par l'utilisateur "+ canal[1];
+
 		// Creation de mon objet Modal
 		const myModal = new bootstrap.Modal(document.getElementById('parametresModal'));
 		// Utilisation de la function show
@@ -127,12 +180,6 @@ window.onload = function () {
 		});
 
 
-
-		/*let nameMol = this.parentNode.parentNode;
-		let final = document.getElementsByClassName("boite_parametre")[0];
-		final.style.display = "block";
-		let title = final.querySelector(".boite_parametre > h2");		//1
-		title.innerHTML = "Paramètre du chat : "+ nameMol.innerHTML;	//2*/
 	}
 
 	let buttonNC = document.getElementById("Nouveau channel");
