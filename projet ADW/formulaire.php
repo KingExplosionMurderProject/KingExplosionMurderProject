@@ -9,7 +9,8 @@
 		header("Location: signin.php");
 		exit();
 	}
-	else{$login=$_SESSION["login"];}
+	else{$login=$_SESSION["login"];
+		$_SESSION["currentChannel"]="Kanto";}
 
 	
 	
@@ -96,6 +97,7 @@
 		<div id="chat"> <!--discussion principale-->
 			<div id="place">
 				<span id="name_chanel">blablabla</span>
+				<div id="currentChannel" style="visibility: hidden"></div>
 				<div id="write">
 
 
@@ -130,8 +132,9 @@
 			//partie écriture des messages
 			// une balise <p> par message
 			// overflow-y: auto;
+			$a="fichiersCSV\\".$_SESSION["currentChannel"].".csv";
 
-				ecritMess("fichiersCSV\chat2.csv"); //boite pour écire les messages
+				ecritMess($a); //boite pour écire les messages
 
 			?>
 				<!--fin de l'ajouté par arwen-->
