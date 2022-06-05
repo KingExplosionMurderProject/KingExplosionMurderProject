@@ -39,22 +39,18 @@
 
     <div id="main"> <!-- gros contenaire-->
 
-
 		<aside class="list">						<!--les autres noms de salons-->
 
 			<div class="boite_user">						<!-- Boite utilisateur -->
-				Utilisateur : <strong><div id="login"><?php echo $login; ?></div> </strong>
-				
-				<br>
+				<div id="util">Utilisateur : <strong> <div id="login"><?php echo $login; ?></div> </strong></div>
 				<!--<div class="?">-->
-					<img src="" id="energiepp"/>
+					<img src="" id="energiepp" />
 				<!--</div>-->
-				<br>
 				<a href="signout.php">déconnexion</a>
 			</div>
-
+			<br>
 			<form action="channelsignup.php" method="post">
-				<h2>Canaux</h2>
+				<h2><strong>Canaux</strong></h2>
 
 				<input type="button" id="Nouveau channel" value="Nouveau channel">
 				<br>
@@ -62,7 +58,6 @@
 				<input type="submit" id="valider" value="OK" style="visibility: hidden">
 				
 				<br>	<!--savoir qui a créer le channel-->
-				<br>
 
 				<div id="spinner">Spinner</div>
 				<ul id="list_canaux"></ul>
@@ -76,7 +71,7 @@
 				        <h5 class="modal-title" id="modalTitle">Modal title</h5>
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
-				      <div class="modal-body" id="modal-body">
+				      <div class="modal-body" id="modal-body"> 
 				        ...
 				      </div>
 				      <div class="modal-footer">
@@ -87,7 +82,11 @@
 				  </div>
 				</div>
 
-				<input type="text" placeholder="search">
+
+				<footer>
+					<input type="text" id="RuC" placeholder="Rechercher un channel">	<!--rechercher un channel !!!!!!!!!!! a faire -->
+				</footer>
+
 
 			</form>
 		</aside> 
@@ -103,25 +102,19 @@
 
 				<!--ajouté par arwen-->
 					<p class="chat">
-						<!-- <div class="boite_parametre" style="display:none;">			ajouté par ilane 	
-							<?php /*
-							echo "<h2>Paramètre du chat "."</h2>"; //savoir quel molette c'est de quel channel
-							echo "<h6>créé par </h6>"; //récuperer le créateur du channel
-							echo "<input type='button' id='Inviter channel' value='Inviter'>";
-							echo "<input type='button' id='Quitter channel' value='Quitter channel'>";*/
-							?>
-						</div> -->
 						<div class="discu">
-
-						<?php 
-						
-							if (isset($_POST['message']) && $_POST['message'] !== ""){
-								newMessage("fichiersCSV\chat2.csv");
-							} 
-							else {
-								printChat("fichiersCSV\chat2.csv");
-							}
-							
+							<div id="emplacement">
+								<?php 
+									//devient inutile pour le moment car on a plus de formulaire
+									if (isset($_POST['message']) && $_POST['message'] !== ""){
+										newMessage("fichiersCSV\chat2.csv");
+									} 
+									else {
+										printChat("fichiersCSV\chat2.csv");
+									}
+									
+								?>
+							</div>
 						?>
 						</div>
 
@@ -132,9 +125,9 @@
 			//partie écriture des messages
 			// une balise <p> par message
 			// overflow-y: auto;
-			$a="fichiersCSV\\".$_SESSION["currentChannel"].".csv";
+			//$a="fichiersCSV\\".$_SESSION["currentChannel"].".csv";
 
-				ecritMess($a); //boite pour écire les messages
+				ecritMess(); //boite pour écire les messages
 
 			?>
 				<!--fin de l'ajouté par arwen-->
