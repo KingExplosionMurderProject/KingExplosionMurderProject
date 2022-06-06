@@ -1,7 +1,7 @@
 /* ctrl + maj + R*/
 body {
 	background-color:#abd9e9;
-  	font-family:Arial;
+  	font-family:monospace;
 	/*max-width: 1024px;				//mieux on prend toute la page
 	min-width: 800px;*/
 	margin: auto;
@@ -13,16 +13,18 @@ body {
 }
 
 aside ul{
-  padding-left:0;
-  margin:0;
-  list-style-type:none;
-  overflow-y:scroll;
-  margin-bottom: 10px;
-  /*height:690px;*/
+	height: 250px;
+  	padding-left: 0;
+	margin: 0;
+ 	margin-bottom: 0px;
+	list-style-type: none;
+	overflow-y: scroll;
+	margin-bottom: 10px;
+	border: solid 1px rgb(71 85 105);
 }
 
 img.pokeball{
-	width : 10%;
+	width : 4%;
 }
 
 img#inscription{
@@ -31,17 +33,21 @@ img#inscription{
 
 img#energiepp{
 	width: 40%;
+	text-align:center;
+    margin:auto;
+    display:flex;
 }
 
 header {
 	text-align: center;
 	border-top: solid 2px blue;
-	padding: 20px;
+	padding: 10px;
 	border-bottom: solid 2px blue;
 	display: flex;
 	justify-content: center; 
 	align-items: center;
 	gap: 10px 50px;
+	background-color: rgb(71 85 105);
 }
 
 h1{
@@ -57,6 +63,9 @@ h3{
 	text-align: center;
 }
 
+#name-channel{
+	background-color: rgb(51 65 85);
+}
 
 div.center{
 	margin: 20px;
@@ -68,6 +77,7 @@ div.chat{
 }
 
 div#place{
+	width: auto;
 	display: flex;
 	flex-direction: column;
 	margin: 0px;
@@ -91,16 +101,16 @@ div.boite_parametre{
 }
 
 aside.list{
-	width: 15%;
+	padding: 0px 20px;
 	border-right-color: black;
 	border-right-width: 1px;
 	border-right-style: solid;
 	margin-right: 20px;
 	padding-bottom: 20px;
+	width: 250px;
 }
 
 div#main{
-	padding: 0px 20px;
 	display: flex;
 	flex-grow: 1;
 	flex-direction: row;
@@ -112,20 +122,29 @@ div#inscription{
 }
 
 div.boite_user{
-	border: solid 3px red;
-	margin-top: 5px;
+	border: groove 5px rgb(75 85 99);
+	margin-top: 10px;
 	margin-left: -10px;
-	margin-right: 10px;
+	margin-right:-5px;
+	padding: 10px;
+}
+
+div#util{
+	display: flex;
 }
 
 div.region{
-	border:  solid 1px darkseagreen;
+	border:  solid 1px rgb(51 65 85);
 	padding: 5px;
 	margin-right: 20px;
-	height: 25px;
+	height: 30px;
 	display: flex;
 	justify-content: center;
 	gap: 0px 20px;
+}
+
+div.region:hover{
+  background-color:#5e616a;
 }
 
 div.log{
@@ -156,5 +175,85 @@ form#newmess{
 
 div#spinner.hidden {
 	display: none;
+}
+
+aside{
+  background-color: rgb(156 163 175);
+  display:inline-block;
+  font-size:15px;
+  vertical-align:top;
+}
+
+#RuC{
+	width: 185px;
+}
+
+/*button#valider{
+	width: 30px;
+	height: 30px;
+	justify-content: center;
+	align-items: center;
+}*/
+
+
+
+
+
+* { box-sizing: border-box; }
+body {
+  font: 16px Arial;
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+
+
+
+
+aside footer{
+	margin: -10px
 }
 
