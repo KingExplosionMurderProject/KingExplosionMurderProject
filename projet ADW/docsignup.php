@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Ce script vérifie les paramètres envoyés par l'utilisateur
 // et, si ces paramètres sont corrects, réalise le signup puis
 // redirige l'utilisateur vers le script "signin.php",
@@ -40,17 +41,46 @@
         $csv = "";
         foreach ($f as $line) { 
             $tokens = explode(',', $line);
-            $csv .= $tokens[0] . ","  . $tokens[1] . "\n";
+            $csv .= $tokens[0] . ","  . $tokens[1] . "," . $tokens[2] . "\n";
         }
         $csv .= $l . ","  . md5($mdp) . "," . $t . "\n";
         file_put_contents("fichiersCSV\users.csv", $csv);
+        /*save_perm($l,"Kanto");*/
     }
-    save_array($users,$login,$mdp1,$type);
-    $_SESSION["login"] = $login;
 
+
+
+    /*save_perm($canaux,$login,$canal);*/
+    function save_perm($f,$l,$c){      
+        $csv = "";
+        foreach ($f as $line) { 
+            $tokens = explode(',', $line);
+            //echo($c);
+            if($tokens[0]==$c){
+                echo("in if");
+                echo(gettype($tokens[2]));
+                array_push($tokens[2],$l);
+            }
+            $csv .= $tokens[0] . ","  . $tokens[1] . "," . $tokens[2] . "\n";
+        }
+        file_put_contents("fichiersCSV\canaux.csv", $csv);
+    }
+
+
+
+    
+    save_array($users,$login,$mdp1,$type);
+
+    $canaux = file("fichiersCSV\canaux.csv",FILE_IGNORE_NEW_LINES);
+
+    save_perm($canaux,$login,"Centre pokemon");
+
+
+    /*
     if (isset($_SESSION["goto"])) {header('Location: ' . $_SESSION["goto"]);}
     else {header('Location: formulaire.php');}
     exit();
+    */
 
 
 
