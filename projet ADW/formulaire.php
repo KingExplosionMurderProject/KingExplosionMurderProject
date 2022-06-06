@@ -90,11 +90,11 @@
 					  <div class="autocomplete" style="width:300px;">
 					    <input id="RuC" type="text" name="myCountry" placeholder="Rechercher un channel">
 					  </div>
-					  <input type="submit"src="images\loupe.png" height ="20px" width="20px"> 
+					  <input type="submit"src="images/loupe.png" height ="20px" width="20px"> 
 					</form>
 
 					<!--<input type="text" id="RuC" placeholder="Rechercher un channel"> 
-					<button type="button" id="valider"> <img src="images\loupe.png" height ="20px" width="20px" /></button>-->
+					<button type="button" id="valider"> <img src="images/loupe.png" height ="20px" width="20px" /></button>-->
 						<!--rechercher un channel !!!!!!!!!!! a faire -->
 				</footer>
 
@@ -118,10 +118,10 @@
 								<?php 
 									//devient inutile pour le moment car on a plus de formulaire
 									if (isset($_POST['message']) && $_POST['message'] !== ""){
-										newMessage("fichiersCSV\chat2.csv");
+										newMessage("fichiersCSV/chat2.csv");
 									} 
 									else {
-										printChat("fichiersCSV\chat2.csv");
+										printChat("fichiersCSV/chat2.csv");
 									}
 									
 								?>
@@ -136,7 +136,7 @@
 			//partie écriture des messages
 			// une balise <p> par message
 			// overflow-y: auto;
-			//$a="fichiersCSV\\".$_SESSION["currentChannel"].".csv";
+			//$a="fichiersCSV/".$_SESSION["currentChannel"].".csv";
 
 				ecritMess(); //boite pour écire les messages
 

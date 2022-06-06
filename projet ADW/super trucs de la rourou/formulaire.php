@@ -58,10 +58,10 @@
 			<?php 
 			
 				if (isset($_POST['message']) && $_POST['message'] !== ""){
-					newMessage("fichiersCSV\chat2.csv");
+					newMessage("fichiersCSV/chat2.csv");
 				} 
 				else {
-					printChat("fichiersCSV\chat2.csv");
+					printChat("fichiersCSV/chat2.csv");
 				}
 				
 			?>
@@ -72,7 +72,7 @@
 			<?php
 			//partie écriture des messages
 
-				ecritMess("fichiersCSV\chat2.csv"); //boite pour écire les messages
+				ecritMess("fichiersCSV/chat2.csv"); //boite pour écire les messages
 
 			?>
 			

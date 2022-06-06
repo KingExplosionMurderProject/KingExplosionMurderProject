@@ -4,7 +4,7 @@
 	//ici nous créons un nouveau channel
 	//il sera ajouter au csv
 
-	$channel = file("fichiersCSV\canaux.csv",FILE_IGNORE_NEW_LINES);
+	$channel = file("fichiersCSV/canaux.csv",FILE_IGNORE_NEW_LINES);
 	if(isset($_POST["leNomDuChannel"])){
 		$nomChannel = $_POST["leNomDuChannel"];
 	} else {
@@ -29,7 +29,7 @@
             $csv .= $tokens[0] . ","  . $tokens[1] . "\n";
         }
         $csv .= $nom . ","  . $crea . "," . $a . "\n";
-        file_put_contents("fichiersCSV\canaux.csv", $csv);
+        file_put_contents("fichiersCSV/canaux.csv", $csv);
     }
 
     save_array($channel,$nomChannel,"créateur","[les autorisations]");

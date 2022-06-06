@@ -5,7 +5,7 @@ session_start();
 // redirige l'utilisateur vers le script "signin.php",
 // sinon, redirige directement l'utilisateur vers le script
 // "signin.php" avec le bon message d'erreur en paramètre
-    $users = file("fichiersCSV\users.csv",FILE_IGNORE_NEW_LINES);
+    $users = file("fichiersCSV/users.csv",FILE_IGNORE_NEW_LINES);
     $login = $_POST[ "login" ];
     $mdp1 = $_POST[ "password1" ];
     $mdp2 = $_POST[ "password2" ];
@@ -44,7 +44,7 @@ session_start();
             $csv .= $tokens[0] . ","  . $tokens[1] . "," . $tokens[2] . "\n";
         }
         $csv .= $l . ","  . md5($mdp) . "," . $t . "\n";
-        file_put_contents("fichiersCSV\users.csv", $csv);
+        file_put_contents("fichiersCSV/users.csv", $csv);
         /*save_perm($l,"Kanto");*/
     }
 
@@ -63,15 +63,13 @@ session_start();
             }
             $csv .= $tokens[0] . ","  . $tokens[1] . "," . $tokens[2] . "\n";
         }
-        file_put_contents("fichiersCSV\canaux.csv", $csv);
+        file_put_contents("fichiersCSV/canaux.csv", $csv);
     }
 
 
-
-    
     save_array($users,$login,$mdp1,$type);
 
-    $canaux = file("fichiersCSV\canaux.csv",FILE_IGNORE_NEW_LINES);
+    $canaux = file("fichiersCSV/canaux.csv",FILE_IGNORE_NEW_LINES);
 
     save_perm($canaux,$login,"Centre pokemon");
 
@@ -91,5 +89,3 @@ session_start();
     header("Location: signin.php");*/
 
 // rajouter dans le canaux.csv l'utilisateur (listes où il peut aller)
-
-?>
