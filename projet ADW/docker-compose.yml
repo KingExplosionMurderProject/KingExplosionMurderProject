@@ -1,0 +1,15 @@
+version: '3'
+services:
+  debug:
+    image: phpstorm/php-71-apache-xdebug
+    ports:
+      - "8087:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      #For Windows and macOS, replace the line below with `host.docker.internal`, which will automatically resolve to the internal address of the host Docker is running on.
+      #For Linux, replace the line below with your hostname, which you can obtain by executing `hostname` in Terminal.
+      XDEBUG_CONFIG: remote_host=here
+
+volumes:
+  data:
