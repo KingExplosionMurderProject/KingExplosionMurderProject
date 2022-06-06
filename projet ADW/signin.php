@@ -24,31 +24,33 @@ if (isset($_GET["goto"])) {
 	<title>Pokechat</title>
     <meta name="author" content="Duee-Moreau et Pelletier">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-	<!--<link rel="stylesheet" href="../css/tp3.css">
-	<link rel="stylesheet" type="text/css" href="style.css">-->
+	<link rel="stylesheet" href="feuille_css.css">
 </head>
 
 <body>
 	
-	<hr>
 
 	<h2>Authentification</h2>
 	<form action="<?php echo $action; ?>" method="post">
-		Votre login
-		<br>
-		<input type="text" name="login">
-		<br><br>
-		votre mot de passe
-		<br>
-		<input type="password" name="password">
-		<br><br>
-		<input type="submit" value="Se connecter">
-		<input type="reset" value="Annuler">
-		<a href="signup.php" style="float:inline-end">Nouvel Utilisateur</a>
+		<div class="log">
+			Votre login
+			<br>
+			<input type="text" name="login">
+			<br><br>
+			Votre mot de passe
+			<br>
+			<input type="password" name="password">
+			<br><br>
+			<input type="submit" value="Se connecter">
+			<input type="reset" value="Annuler">
+			<a href="signup.php" style="float:inline-end">Nouvel Utilisateur</a>
+		</div>
 	</form>
 	<?php
-	if (isset($_GET["badlogin"]))
-		echo "<h2>Mauvais login/mot de passe </h2>";
+	if (isset($_GET["badlogin"])){
+		echo "<br>";
+		echo "<pre> <h3>Mauvais login/mot de passe </h3>";
+	}
 	?>
 </body>
 
