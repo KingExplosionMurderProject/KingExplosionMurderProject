@@ -23,6 +23,7 @@
     <meta name="author" content="Duee-Moreau et Pelletier">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="feuille_css.css" />
+	<script src="simpleajax.js"></script>
 	<script src="formulaire.js"></script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,6 +62,7 @@
 
 				<div id="spinner">Spinner</div>
 				<ul id="list_canaux"></ul>
+				<!--https://getbootstrap.com/docs/5.2/components/badge/-->
 
 
 				<!-- Modal -->
@@ -84,7 +86,16 @@
 
 
 				<footer>
-					<input type="text" id="RuC" placeholder="Rechercher un channel">	<!--rechercher un channel !!!!!!!!!!! a faire -->
+					<form autocomplete="off" action="/action_page.php">
+					  <div class="autocomplete" style="width:300px;">
+					    <input id="RuC" type="text" name="myCountry" placeholder="Rechercher un channel">
+					  </div>
+					  <input type="submit"src="images\loupe.png" height ="20px" width="20px"> 
+					</form>
+
+					<!--<input type="text" id="RuC" placeholder="Rechercher un channel"> 
+					<button type="button" id="valider"> <img src="images\loupe.png" height ="20px" width="20px" /></button>-->
+						<!--rechercher un channel !!!!!!!!!!! a faire -->
 				</footer>
 
 
