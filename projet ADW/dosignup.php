@@ -76,11 +76,11 @@ session_start();
     save_perm($canaux,$login,"Centre pokemon");
 
 
-    /*
+    
     if (isset($_SESSION["goto"])) {header('Location: ' . $_SESSION["goto"]);}
     else {header('Location: formulaire.php');}
     exit();
-    */
+    
 
 
 
