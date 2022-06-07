@@ -1,17 +1,21 @@
 window.onload = function() {
-
-    //import readTextFile() from utils.js;
+	// Remarque à faire :
+    // import readTextFile() from utils.js;
     // Recuperer liste des canaux
-    //https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules
 
+    // setTimeout(() => {		Si on veut mieux voir le spinner pour mettre un feu rouge au code
+    // }, 3000);
+
+    // Initialisation des variables :
     var canaux = null;
     var currentChannel = null;
+    var last_list_canaux = [];
 
     var login = document.getElementById("login").innerHTML;
     var users = null;
     var currentUsers = null;
 
-    // var fetchingCanaux = true;
 
     // A mettre dans un fichier "utils" qui sera commun avec d'autres fichiers JS
     function readTextFile(file) {
@@ -80,7 +84,7 @@ window.onload = function() {
             return col.split(',');
         });
         // liste de users recupere
-        console.log(users);
+        //console.log(users);
     }, (err) => {
         // Error
         console.log(err);
@@ -89,18 +93,12 @@ window.onload = function() {
     }).finally(() => {
         let i = 0;
         users.forEach((user) => {
-
-
-
+        	//console.log(user);
             if (user[0] == login) {
-
-
-
                 whichType(user);
             }
             i++;
         });
-
         //refreshChannels();
     });
 
@@ -149,15 +147,13 @@ window.onload = function() {
         valider.style.visibility = "visible";
     }
 
-    function whichType(user) {
+    function whichType(user) {					//	Connaitre le type de l'utilisateur courant
         //console.log(user[2]);
-        console.log(user);
         document.getElementById("energiepp").src = "energies\\" + user[2] + ".png";
     }
 
 
     function changerChannel(canal) {
-        console.log(canal);
         let nc = document.getElementById("name_chanel");
         nc.innerHTML = "Nous sommes à " + canal[0]; //this = channel[i]
         let cc = document.getElementById("currentChannel");
@@ -201,8 +197,8 @@ window.onload = function() {
     }
 
     document.getElementById("quitterChannel").addEventListener('click', function() {
-        console.log('quiter');
-        console.log(currentChannel);
+        console.log('quitter');
+        //console.log(currentChannel);
         // Executer le code pour supprimer l'utilisateur du canal
     });
 
@@ -216,6 +212,8 @@ window.onload = function() {
         /*the autocomplete function takes two arguments,
         the text field element and an array of possible autocompleted values:*/
         var currentFocus;
+        console.log(inp);
+        console.log(arr);
         /*execute a function when someone writes in the text field:*/
         inp.addEventListener("input", function(e) {
             var a, b, i, val = this.value;
@@ -312,14 +310,14 @@ window.onload = function() {
         });
     }
 
-    autocomplete(document.getElementById("RuC"), canaux);
+    autocomplete(document.getElementById("RuC"), last_list_canaux);
 
 
 
 
     // partie du chat-----------------------------------------------------------------------------------------------------
-
-    setInterval(loadChat, 1000);
+    //setInterval(loadChat, 1000); //et non
+    //setInterval(chatLoad, 1000);
 
     let sub = document.getElementById("envoyer");
     sub.addEventListener('click', event => {
