@@ -23,6 +23,14 @@ aside ul{
 	border: solid 1px rgb(71 85 105);
 }
 
+div.discu{
+	height: 400px;
+	list-style-type: none;
+	overflow-y: scroll;
+	margin-bottom: 10px;
+	border: solid 1px rgb(71 85 105);
+}
+
 img.pokeball{
 	width : 4%;
 }
@@ -74,6 +82,11 @@ div.center{
 
 div.chat{
 	flex-grow: 1;
+
+}
+
+div#chat{
+	width: 100%;
 }
 
 div#place{
@@ -81,15 +94,17 @@ div#place{
 	display: flex;
 	flex-direction: column;
 	margin: 0px;
+	margin-right: 20px;
 }
 
 div#write{
-	align-self: flex-end;
 	flex-direction: column;
+
 }
 
 div.discu{
-	border: solid 1px darkcyan;
+	border: solid 3px darkcyan;
+	background-color: rgb(226 232 240);
 	width: 100%;
 }
 
@@ -188,6 +203,8 @@ aside{
 	width: 185px;
 }
 
+
+
 /*button#valider{
 	width: 30px;
 	height: 30px;
@@ -206,8 +223,11 @@ body {
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: stretch;
+  width: 300px;
 }
+/*
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
@@ -221,7 +241,8 @@ input[type=text] {
 input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
-}
+}				
+*/
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -255,5 +276,22 @@ input[type=submit] {
 
 aside footer{
 	margin: -10px
+}
+
+#message{
+	width: 100%;
+}
+
+input#loupe{
+	width: 30px;
+	height: 30px;
+	justify-content: center;
+	align-items: center;
+}
+
+div.sms{
+	border: solid 1px rgb(71 85 105);
+	border-radius: 5px 5px 0 5px;
+	margin: 0 20px;
 }
 
