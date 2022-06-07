@@ -1,0 +1,7 @@
+PROBLEME ET CE QU'ILANE A A FAIRE
+
+- recherche canaux, pb car il n'arrive pas a avoir la liste de chaque titre de channel
+  puis affichage des recherches en dessous
+- rechercher des canaux et puis envoyer une demande d'invitation pour etre autoriser a rentrer
+- passer les info des channels en json
+- pouvoir quitter un cannal de discussion
