@@ -9,8 +9,9 @@ window.onload = function() {
 
     // Initialisation des variables :
     var canaux = null;
+    var canauxObj = null;
     var currentChannel = null;
-    var last_list_canaux = [];
+    /*var last_list_canaux = [];*/
 
     var login = document.getElementById("login").innerHTML;
     var users = null;
@@ -46,16 +47,13 @@ window.onload = function() {
     // Execute le code apres 3 secondes d'attente
     // setTimeout(() => {
     // }, 3000);
-    readTextFile('fichiersCSV/canaux.csv').then((res) => {
+    readTextFile('fichiersCSV/canaux.json').then((res) => {
+    	canauxObj = JSON.parse(res);
+    	canaux = [];
+    	for (const nom in canauxObj)
+    		canaux.push(nom);
+    	autocomplete(document.getElementById("RuC"), canaux);
         // Success
-        canaux = res.split("\n");
-        canaux = canaux.filter((line) => {
-            // For each, execution pour chaque line
-            return (line && line.length > 0);
-        });
-        canaux = canaux.map((col) => {
-            return col.split(',');
-        });
         // liste de canaux recupere
         //console.log(canaux);
     }, (err) => {
@@ -99,7 +97,7 @@ window.onload = function() {
             }
             i++;
         });
-        //refreshChannels();
+        refreshChannels();
     });
 
 
@@ -109,6 +107,7 @@ window.onload = function() {
         // On vide le ul pour prepare le prochain affichage
         ul.innerHTML = "";
         canaux.forEach((canal) => {
+        	console.log(canal);
             // Create une balise <li>
             let li = document.createElement('li');
             // Creer un premier <div> pour la region
@@ -118,7 +117,7 @@ window.onload = function() {
             // Creer un deuxieme <div> pour le nom de la region
             let nomRegionDiv = document.createElement('div');
             nomRegionDiv.classList.add('nomRegion');
-            nomRegionDiv.innerHTML = canal[0];
+            nomRegionDiv.innerHTML = canal;
             // Creer molette de parametres
             let moletteDiv = document.createElement('div');
             moletteDiv.classList = 'parametre d-flex justify-content-center align-items-center';
@@ -163,9 +162,10 @@ window.onload = function() {
     function param(canal) {
         // Mettre à jour le titre de la modal
         let modalTitle = document.getElementById("modalTitle");
-        modalTitle.innerHTML = 'Paramètre du chat ' + canal[0];
+        modalTitle.innerHTML = 'Paramètre du chat ' + canal;
+        console.log(canauxObj);
         let modalText = document.getElementById("modal-body");
-        modalText.innerHTML = "créé par l'utilisateur " + canal[1];
+        modalText.innerHTML = "créé par l'utilisateur " + canauxObj[canal]["createur"];
 
         // Creation de mon objet Modal
         const myModal = new bootstrap.Modal(document.getElementById('parametresModal'));
@@ -230,12 +230,15 @@ window.onload = function() {
             /*for each item in the array...*/
             for (i = 0; i < arr.length; i++) {
                 /*check if the item starts with the same letters as the text field value:*/
-                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                console.log(arr[i], val);
+                if (arr[i].toLowerCase().indexOf(val.toLowerCase()) != -1) {
+                // if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                     /*create a DIV element for each matching element:*/
                     b = document.createElement("DIV");
                     /*make the matching letters bold:*/
-                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                    b.innerHTML += arr[i].substr(val.length);
+                    // b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                    // b.innerHTML += arr[i].substr(val.length);
+                    b.innerHTML = arr[i];
                     /*insert a input field that will hold the current array item's value:*/
                     b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
                     /*execute a function when someone clicks on the item value (DIV element):*/
@@ -310,7 +313,7 @@ window.onload = function() {
         });
     }
 
-    autocomplete(document.getElementById("RuC"), last_list_canaux);
+    
 
 
 
