@@ -15,7 +15,7 @@ window.onload = function() {
 
     var login = document.getElementById("login").innerHTML;
     var users = null;
-    var currentUsers = null;
+    var currentUser = null;
 
 
     // A mettre dans un fichier "utils" qui sera commun avec d'autres fichiers JS
@@ -49,6 +49,7 @@ window.onload = function() {
     // }, 3000);
     readTextFile('fichiersCSV/canaux.json').then((res) => {
     	canauxObj = JSON.parse(res);
+    	console.log(canauxObj["Kanto"]["autorisations"]);
     	canaux = [];
     	for (const nom in canauxObj)
     		canaux.push(nom);
@@ -69,7 +70,7 @@ window.onload = function() {
         refreshChannels();
     });
 
-    console.log("etape 1");
+    
     readTextFile('fichiersCSV/users.csv').then((res) => {
         // Success
 
@@ -100,6 +101,20 @@ window.onload = function() {
         refreshChannels();
     });
 
+    function isInChannel(c){
+    	let tab = canauxObj[c]["autorisations"] ;
+    	console.log(c);
+    	for (var i in tab) {
+    		/*console.log(login);
+    		console.log(i);*/
+   			if(login==tab[i]){
+				return true;
+			}
+		}
+    	return false;
+    	//return true;
+    }
+
 
 
     function refreshChannels() {
@@ -107,34 +122,36 @@ window.onload = function() {
         // On vide le ul pour prepare le prochain affichage
         ul.innerHTML = "";
         canaux.forEach((canal) => {
-        	console.log(canal);
+        	//console.log(canal);
             // Create une balise <li>
-            let li = document.createElement('li');
-            // Creer un premier <div> pour la region
-            let regionDiv = document.createElement('div');
-            regionDiv.classList = 'region d-flex justify-content-center align-items-center';
-            /*regionDiv.setAttribute("nomRegion");*/
-            // Creer un deuxieme <div> pour le nom de la region
-            let nomRegionDiv = document.createElement('div');
-            nomRegionDiv.classList.add('nomRegion');
-            nomRegionDiv.innerHTML = canal;
-            // Creer molette de parametres
-            let moletteDiv = document.createElement('div');
-            moletteDiv.classList = 'parametre d-flex justify-content-center align-items-center';
-            moletteDiv.innerHTML = "<img class='molette' src='images/molette.png'>"
-                // Evenement quand on clisque sur la div
-            regionDiv.addEventListener('click', event => {
-                changerChannel(canal);
-            });
-            // Evenement quand on clique sur la molette
-            moletteDiv.addEventListener('click', event => {
-                param(canal);
-            });
-            // Poupees russes
-            regionDiv.append(nomRegionDiv);
-            regionDiv.append(moletteDiv);
-            li.append(regionDiv);
-            ul.append(li);
+            if(isInChannel(canal)){
+	            let li = document.createElement('li');
+	            // Creer un premier <div> pour la region
+	            let regionDiv = document.createElement('div');
+	            regionDiv.classList = 'region d-flex justify-content-center align-items-center';
+	            /*regionDiv.setAttribute("nomRegion");*/
+	            // Creer un deuxieme <div> pour le nom de la region
+	            let nomRegionDiv = document.createElement('div');
+	            nomRegionDiv.classList.add('nomRegion');
+	            nomRegionDiv.innerHTML = canal;
+	            // Creer molette de parametres
+	            let moletteDiv = document.createElement('div');
+	            moletteDiv.classList = 'parametre d-flex justify-content-center align-items-center';
+	            moletteDiv.innerHTML = "<img class='molette' src='images/molette.png'>"
+	                // Evenement quand on clisque sur la div
+	            regionDiv.addEventListener('click', event => {
+	                changerChannel(canal);
+	            });
+	            // Evenement quand on clique sur la molette
+	            moletteDiv.addEventListener('click', event => {
+	                param(canal);
+	            });
+	            // Poupees russes
+	            regionDiv.append(nomRegionDiv);
+	            regionDiv.append(moletteDiv);
+	            li.append(regionDiv);
+	            ul.append(li);
+	        }
         });
     }
 
@@ -163,10 +180,10 @@ window.onload = function() {
         // Mettre à jour le titre de la modal
         let modalTitle = document.getElementById("modalTitle");
         modalTitle.innerHTML = 'Paramètre du chat ' + canal;
-        console.log(canauxObj);
+        //console.log(canauxObj);
         let modalText = document.getElementById("modal-body");
-        modalText.innerHTML = "créé par l'utilisateur " + canauxObj[canal]["createur"];
-
+        modalText.innerHTML = "Créé par l'utilisateur <strong>" + canauxObj[canal]["createur"] + "</strong>.<br>";
+         modalText.innerHTML += "Les utilisateurs autorisés a accéder au canal sont : " + canauxObj[canal]["autorisations"] + ".";
         // Creation de mon objet Modal
         const myModal = new bootstrap.Modal(document.getElementById('parametresModal'));
         // Utilisation de la function show
@@ -212,8 +229,8 @@ window.onload = function() {
         /*the autocomplete function takes two arguments,
         the text field element and an array of possible autocompleted values:*/
         var currentFocus;
-        console.log(inp);
-        console.log(arr);
+        //console.log(inp);
+        //console.log(arr);
         /*execute a function when someone writes in the text field:*/
         inp.addEventListener("input", function(e) {
             var a, b, i, val = this.value;
@@ -230,7 +247,7 @@ window.onload = function() {
             /*for each item in the array...*/
             for (i = 0; i < arr.length; i++) {
                 /*check if the item starts with the same letters as the text field value:*/
-                console.log(arr[i], val);
+                //console.log(arr[i], val);
                 if (arr[i].toLowerCase().indexOf(val.toLowerCase()) != -1) {
                 // if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                     /*create a DIV element for each matching element:*/

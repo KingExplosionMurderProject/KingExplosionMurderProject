@@ -71,6 +71,14 @@
 		}
 		echo "<h2>$msg</h2>";
 	}
+	else if (isset ($_GET[ "login" ])){																								//nouvel ajout
+		include('channelparam.php');
+		$channel = "fichiersCSV\\canaux.json";
+		$nom_channel = "Centre pokemon";
+		$login = $_GET[ "login" ] ;
+		add_new_user($channel,$nom_channel,$login);
+		header('Location: formulaire.php');
+	}
 ?>
 	</body>
 </html>

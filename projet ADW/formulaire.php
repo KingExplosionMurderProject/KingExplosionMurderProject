@@ -23,8 +23,9 @@
     <meta name="author" content="Duee-Moreau et Pelletier">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="feuille_css.css" />
-	<script src="simpleajax.js"></script>
 	<script src="formulaire.js"></script>
+	<script src="simpleajax.js"></script>
+	
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,7 +51,7 @@
 				<a href="signout.php">déconnexion</a>
 			</div>
 			<br>
-			<form action="channelsignup.php" method="post">
+			<form action="channelsignupjson.php" method="post">						<!--channelsignupjson-->
 				<h2><strong>Canaux</strong></h2>
 
 				<input type="button" id="Nouveau channel" value="Nouveau channel">
@@ -83,18 +84,19 @@
 				    </div>
 				  </div>
 				</div>
+				<br>
 
 
 				<footer>
 					<form autocomplete="off" action="/action_page.php">
 					  <div class="autocomplete" style="width:300px;">
-					    <input id="RuC" type="text" name="myCountry" placeholder="Rechercher un channel">
+					    <input id="RuC" type="text" name="myCountry" placeholder="Rechercher un channel" autocomplete="off">
+					    <input type="image" id="loupe" src="images\\loupe.png"> 
 					  </div>
-					  <input type="submit"src="images/loupe.png" height ="20px" width="20px"> 
 					</form>
 
 					<!--<input type="text" id="RuC" placeholder="Rechercher un channel"> 
-					<button type="button" id="valider"> <img src="images/loupe.png" height ="20px" width="20px" /></button>-->
+					<button type="button" id="valider"> <img src="images\loupe.png" height ="20px" width="20px" /></button>-->
 						<!--rechercher un channel !!!!!!!!!!! a faire -->
 				</footer>
 
@@ -118,15 +120,14 @@
 								<?php 
 									//devient inutile pour le moment car on a plus de formulaire
 									if (isset($_POST['message']) && $_POST['message'] !== ""){
-										newMessage("fichiersCSV/chat2.csv");
+										newMessage("fichiersCSV\chat2.csv");
 									} 
 									else {
-										printChat("fichiersCSV/chat2.csv");
+										printChat("fichiersCSV\chat2.csv");
 									}
 									
 								?>
 							</div>
-						?>
 						</div>
 
 					</p>
@@ -136,7 +137,7 @@
 			//partie écriture des messages
 			// une balise <p> par message
 			// overflow-y: auto;
-			//$a="fichiersCSV/".$_SESSION["currentChannel"].".csv";
+			//$a="fichiersCSV\\".$_SESSION["currentChannel"].".csv";
 
 				ecritMess(); //boite pour écire les messages
 

@@ -4,7 +4,7 @@
 	//ici nous créons un nouveau channel
 	//il sera ajouter au csv
 
-	$channel = file("fichiersCSV/canaux.csv",FILE_IGNORE_NEW_LINES);
+	$channel = file("fichiersCSV\canaux.csv",FILE_IGNORE_NEW_LINES);
 	if(isset($_POST["leNomDuChannel"])){
 		$nomChannel = $_POST["leNomDuChannel"];
 	} else {
@@ -12,7 +12,7 @@
 		$nomChannel ="you re a loser";
 	}
 	
-
+    /*
 	foreach ( $channel as $line ){         //on va regarder chaque nom de channel déjà inscript
         $a = explode(",",$line);
         if ( $nomChannel == $a[0] ){
@@ -20,19 +20,20 @@
             echo "pb";
             exit();
         }
-    }
+    }*/
 
-	function save_array($f,$nom,$crea,$a){  //sauvegarder le nouveau fichier
+	function save_array_channel($f,$nom,$crea,$a){  //sauvegarder le nouveau fichier
         $csv = "";
         foreach ($f as $line) { 
             $tokens = explode(',', $line);
             $csv .= $tokens[0] . ","  . $tokens[1] . "\n";
         }
         $csv .= $nom . ","  . $crea . "," . $a . "\n";
-        file_put_contents("fichiersCSV/canaux.csv", $csv);
+        file_put_contents("fichiersCSV\canaux.csv", $csv);
     }
 
-    save_array($channel,$nomChannel,"créateur","[les autorisations]");
-    $_SESSION["login"] = $login;
+    save_array_channel($channel,$nomChannel,"créateur","[les autorisations]");
+    /*$_SESSION["login"] = $login;
     header('Location: formulaire.php');
+    exit();*/
 ?>
