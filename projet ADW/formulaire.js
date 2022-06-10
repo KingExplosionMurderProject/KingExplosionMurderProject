@@ -49,7 +49,7 @@ window.onload = function() {
     // }, 3000);
     readTextFile('fichiersCSV/canaux.json').then((res) => {
     	canauxObj = JSON.parse(res);
-    	console.log(canauxObj["Kanto"]["autorisations"]);
+    	//console.log(canauxObj["Kanto"]["autorisations"]);
     	canaux = [];
     	for (const nom in canauxObj)
     		canaux.push(nom);
@@ -103,7 +103,7 @@ window.onload = function() {
 
     function isInChannel(c){
     	let tab = canauxObj[c]["autorisations"] ;
-    	console.log(c);
+    	//console.log(c);
     	for (var i in tab) {
     		/*console.log(login);
     		console.log(i);*/
@@ -196,8 +196,19 @@ window.onload = function() {
         myModalEl.addEventListener('hidden.bs.modal', event => {
             currentChannel = null;
         });
+    }
 
+    function rechercheChannel(){
+    	let canal = document.getElementById("RuC");
 
+    	for(var c in canaux){
+    		if(canal==canaux[c]){
+    			console.log("yes");
+    		}
+    		else{
+    			console.log("no");
+    		}
+    	}
     }
 
     let buttonNC = document.getElementById("Nouveau channel");
@@ -212,6 +223,10 @@ window.onload = function() {
     for (i = 0; i < buttonP.length; i++) {
         buttonP[i].onclick = param;
     }
+
+    console.log(canaux);											//ICI 
+    var loupe = document.getElementById("loupe");
+    loupe.onclick = rechercheChannel;
 
     document.getElementById("quitterChannel").addEventListener('click', function() {
         console.log('quitter');
